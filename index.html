@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipp Cloud</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../static/css_files/styles.css">
+</head>
+<body>
+
+<!-- Top Left Icon for Side Menu -->
+<button class="btn btn-secondary ml-3 mt-3" type="button" id="menuIcon">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Side Menu -->
+<div class="side-menu">
+    <div class="list-group">
+        <a href="#newClipsSection" class="list-group-item list-group-item-action">Generate New Clips</a>
+        <a href="#librarySection" class="list-group-item list-group-item-action">Library</a>
+        <a href="#favouriteSection" class="list-group-item list-group-item-action">Favourite</a>
+        <a href="#reviewsSection" class="list-group-item list-group-item-action">Review</a>
+        <a href="#faqSection" class="list-group-item list-group-item-action">FAQ</a>
+        <a href="#helpSection" class="list-group-item list-group-item-action">Help and Support</a>
+    </div>
+</div>
+
+<!-- Video Input and Upload Button Functionality -->
+<div class="mb-4">
+    <input type="text" id="videoUrl" class="form-control" placeholder="Enter YouTube URL">
+    <button id="uploadBtn" class="btn btn-primary mt-2">Upload</button>
+</div>
+
+<!-- Help Button -->
+<button id="helpBtn" class="btn btn-info">Help</button>
+
+<button id="uploadVideoBtn" class="btn btn-primary mt-2" onclick="uploadVideo()">Upload Video</button>
+
+
+<!-- Generated Content Display -->
+<div>
+    <h4>Generated Content</h4>
+    <div id="captionArea" class="mb-3"></div>
+    <div id="descriptionArea" class="mb-3"></div>
+    <div id="titleArea" class="mb-3"></div>
+</div>
+
+<!-- Customization and Editing Options -->
+<div>
+    <h4>Customization and Editing</h4>
+    <button id="editCaptionBtn" class="btn btn-secondary" onclick="toggleEditing('caption')">Edit Caption</button>
+    <button id="editDescriptionBtn" class="btn btn-secondary" onclick="toggleEditing('description')">Edit Description</button>
+    <button id="editTitleBtn" class="btn btn-secondary" onclick="toggleEditing('title')">Edit Title</button>
+</div>
+
+
+<!-- Preview and Playback -->
+<div>
+    <h4>Preview and Playback</h4>
+    <video id="videoPlayer" width="400" controls></video>
+    <button id="prevClipBtn" class="btn btn-secondary" onclick="playPreviousClip()">Previous Clip</button>
+    <button id="nextClipBtn" class="btn btn-secondary" onclick="playNextClip()">Next Clip</button>
+</div>
+
+
+<!-- Save and Download Options -->
+<div>
+    <h4>Save and Download</h4>
+    <button id="saveBtn" class="btn btn-success">Save</button>
+    <button id="downloadBtn" class="btn btn-warning">Download</button>
+</div>
+
+<!-- Automated Feedback Prompt -->
+<div id="automatedFeedbackPrompt" class="mb-3"></div>
+
+<!-- Feedback Button -->
+<button id="feedbackBtn" class="btn btn-info">Provide Feedback</button>
+
+<!-- Ensure that these elements are present in your HTML -->
+<div id="captionArea" class="mb-3"></div>
+<div id="descriptionArea" class="mb-3"></div>
+<div id="titleArea" class="mb-3"></div>
+
+
+<script src="../static/js_files/main.js"></script>
+<script src="../static/js_files/videoPlayer.js"></script>
+<script src="../static/js_files/feedback.js"></script>
+
+<script>
+    function uploadVideo() {
+        const videoUrl = document.getElementById('videoUrl').value;
+
+        // Validate YouTube URL
+        if (isValidYoutubeUrl(videoUrl)) {
+            // TODO: Send videoUrl to backend for further processing
+            console.log(`Uploading video from URL: ${videoUrl}`);
+        } else {
+            alert('Please enter a valid YouTube URL.');
+        }
+    }
+</script>
+
+</body>
+</html>
